@@ -1,0 +1,66 @@
+name: Build & Test
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Set up Python 3.11.1
+        id: setup-python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.11.1
+          cache: 'pip'
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+#      - name: Run Tests
+#        run: |
+#          pytest
+#      - name: MyPy
+#        run: |
+#          mypy .
+
+#      - uses: actions/checkout@v3
+#        with:
+#          fetch-depth: 0
+#          repository: DragosDumitrache/versioner
+#          ref: 82536c1ed05a6b8d576f1cb44746631ca658dc40
+#          path: versioner
+#
+#      - name: SemVer
+#        if: github.ref == 'refs/heads/main'
+#        id: semver
+#        uses: ./versioner/versioner
+#
+#      - name: Tag version
+#        if: github.ref == 'refs/heads/main'
+#        run: |
+#          echo ${{ steps.semver.outputs.version }}
+#          git config --global user.email "robot@oneroar.io"
+#          git config --global user.name "Rolly Polly"
+#          git tag -a ${{ steps.semver.outputs.version }} -m ${{ steps.semver.outputs.version }}
+#          poetry version ${{ steps.SemVer.outputs.version }}
+#          git add pyproject.toml
+#          git commit --amend --no-edit
+#          git push --force --tags
+#
+
+      - name: Build
+        if: github.ref == 'refs/heads/main'
+        run: |
+          pip install build
+          python3 -m build
+      - name: Publish
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          password: ${{ secrets.PYPI_TOKEN }}

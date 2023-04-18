@@ -1,8 +1,11 @@
-from one_block.accessory import Accessory
+from typing import List
+
+from one_block.accessory.accessory import Accessory
+from one_block.accessory.option import Option
 
 
 class Checkbox(Accessory):
-    def __init__(self, action_id, options):
+    def __init__(self, action_id: str, options: List[Option]):
         self.action_id = action_id
         self.options = options
 

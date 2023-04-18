@@ -1,6 +1,6 @@
-# slack-blocks
+# one-block
 
-`slack-blocks` has started as I needed to start using [Slack's Block Kit](https://api.slack.com/block-kit) for the
+`one-block` has started as I needed to start using [Slack's Block Kit](https://api.slack.com/block-kit) for the
 design of my application. While there are [a few Python packages available](#alternative-python-implementations)
 already, they were either using a license I was uncomfortable with, or have simply not been kept up-to-date.
 

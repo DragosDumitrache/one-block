@@ -1,10 +1,10 @@
-from one_block.base import Base, BasePlainText
+from one_block.base import Base, BaseText
 from one_block.input_blocks.plain_text_input import PlainTextInput
 
 
 class TextInput(Base):
     def __init__(self, label, action_id, block_id, dispatch=False, multiline=False, custom_triggers=None):
-        self.label = BasePlainText(label)
+        self.label = BaseText(label)
         self.dispatch = dispatch
         self.block_id = block_id
         self.element = PlainTextInput(action_id, multiline=multiline, custom_triggers=custom_triggers)

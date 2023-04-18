@@ -1,24 +1,12 @@
 from one_block import accessory
-from one_block.base import Base, BaseMarkdown
+from one_block.accessory import ButtonStyle
+from one_block.base import Base, BaseText
 
 
 class Button(Base):
-    def __init__(self, text, button_label, action_id, value, style=None):
-        self.text = BaseMarkdown(text)
-        self.accessory = accessory.Button(button_label, action_id, value, style)
-
-    def json(self):
-        return {
-            'type': 'section',
-            'text': self.text.json(),
-            'accessory': self.accessory.json()
-        }
-
-
-class LinkButton(Base):
-    def __init__(self, text, button_label, action_id, value, url, style=None):
-        self.text = BaseMarkdown(text)
-        self.accessory = accessory.LinkButton(button_label, action_id, value, url, style)
+    def __init__(self, text, button_label, action_id, value, url=None, style=ButtonStyle.DEFAULT):
+        self.text = BaseText(text, markdown=True)
+        self.accessory = accessory.Button(button_label, action_id, value, url=url, style=style)
 
     def json(self):
         return {

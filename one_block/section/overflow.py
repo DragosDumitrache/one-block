@@ -1,11 +1,11 @@
 from one_block import accessory
-from one_block.base import Base, BaseMarkdown
+from one_block.base import Base, BaseText
 
 
 class Overflow(Base):
-    def __init__(self, text, options):
-        self.text = BaseMarkdown(text)
-        self.accessory = accessory.Overflow(options)
+    def __init__(self, text, action_id, options):
+        self.text = BaseText(text, markdown=True)
+        self.accessory = accessory.Overflow(action_id, options)
 
     def json(self):
         return {

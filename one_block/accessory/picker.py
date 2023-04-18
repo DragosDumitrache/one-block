@@ -1,5 +1,5 @@
 from one_block.accessory import Accessory
-from one_block.base import BasePlainText
+from one_block.base import BaseText
 
 
 class DatePicker(Accessory):
@@ -7,7 +7,7 @@ class DatePicker(Accessory):
         self.action_id = action_id
         self.initial_date = initial_date
         if placeholder:
-            self.placeholder = BasePlainText(placeholder)
+            self.placeholder = BaseText(placeholder)
         else:
             self.placeholder = None
 
@@ -28,7 +28,7 @@ class TimePicker(Accessory):
         self.action_id = action_id
         self.initial_time = initial_time
         if placeholder:
-            self.placeholder = BasePlainText(placeholder)
+            self.placeholder = BaseText(placeholder)
         else:
             self.placeholder = None
 

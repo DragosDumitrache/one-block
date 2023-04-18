@@ -7,28 +7,21 @@ class Base(abc.ABC):
         raise NotImplementedError
 
 
-class BasePlainText(Base):
-    def __init__(self, text, emoji=True):
+class BaseText(Base):
+    def __init__(self, text: str, markdown: bool = False, emoji: bool = True):
         self.text = text
+        self.markdown = markdown
         self.emoji = emoji
 
     def json(self):
-        return {
-            'type': 'plain_text',
+        block_type = 'mrkdwn' if self.markdown else 'plain_text'
+        base = {
+            'type': block_type,
             'text': self.text,
-            'emoji': self.emoji
         }
-
-
-class BaseMarkdown(Base):
-    def __init__(self, text):
-        self.text = text
-
-    def json(self):
-        return {
-            'type': 'mrkdwn',
-            'text': self.text
-        }
+        if not self.markdown:
+            base['emoji'] = self.emoji
+        return base
 
 
 def get_blocks(blocks: List[Base]):

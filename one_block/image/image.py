@@ -1,5 +1,5 @@
 from one_block.accessory import Accessory
-from one_block.base import BasePlainText
+from one_block.base import BaseText
 
 
 class Image(Accessory):
@@ -7,7 +7,7 @@ class Image(Accessory):
         self.image_url = image_url
         self.alt_text = alt_text
         if title:
-            self.title = BasePlainText(title)
+            self.title = BaseText(title)
         else:
             self.title = None
 

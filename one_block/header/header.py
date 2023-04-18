@@ -1,9 +1,9 @@
-from one_block.base import Base, BasePlainText
+from one_block.base import Base, BaseText
 
 
 class Header(Base):
     def __init__(self, text):
-        self.text = BasePlainText(text)
+        self.text = BaseText(text)
 
     def json(self):
         return {

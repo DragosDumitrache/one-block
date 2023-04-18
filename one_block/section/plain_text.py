@@ -1,9 +1,9 @@
-from one_block.base import Base, BasePlainText
+from one_block.base import Base, BaseText
 
 
 class PlainText(Base):
     def __init__(self, text, emoji=True):
-        self.base = BasePlainText(text, emoji)
+        self.base = BaseText(text, emoji)
 
     def json(self):
         return {

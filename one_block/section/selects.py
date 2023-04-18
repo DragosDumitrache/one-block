@@ -1,10 +1,10 @@
 from one_block import accessory
-from one_block.base import Base, BaseMarkdown
+from one_block.base import Base, BaseText
 
 
 class UserSelect(Base):
     def __init__(self, text, placeholder, action_id):
-        self.text = BaseMarkdown(text)
+        self.text = BaseText(text, markdown=True)
         self.accessory = accessory.UserSelect(placeholder, action_id)
 
     def json(self):
@@ -17,7 +17,7 @@ class UserSelect(Base):
 
 class StaticSelect(Base):
     def __init__(self, text, placeholder, action_id, block_id, options):
-        self.text = BaseMarkdown(text)
+        self.text = BaseText(text, markdown=True)
         self.block_id = block_id
         self.accessory = accessory.StaticSelect(placeholder, action_id, options)
 
@@ -32,7 +32,7 @@ class StaticSelect(Base):
 
 class MultiStaticSelect(Base):
     def __init__(self, text, placeholder, action_id, options):
-        self.text = BaseMarkdown(text)
+        self.text = BaseText(text, markdown=True)
         self.accessory = accessory.StaticSelect(placeholder, action_id, options, multi=True)
 
     def json(self):
@@ -45,7 +45,7 @@ class MultiStaticSelect(Base):
 
 class ConversationSelect(Base):
     def __init__(self, text, placeholder, action_id):
-        self.text = BaseMarkdown(text)
+        self.text = BaseText(text, markdown=True)
         self.accessory = accessory.ConversationSelect(placeholder, action_id)
 
     def json(self):
@@ -58,7 +58,7 @@ class ConversationSelect(Base):
 
 class ChannelSelect(Base):
     def __init__(self, text, placeholder, action_id):
-        self.text = BaseMarkdown(text)
+        self.text = BaseText(text, markdown=True)
         self.accessory = accessory.ChannelSelect(placeholder, action_id)
 
     def json(self):

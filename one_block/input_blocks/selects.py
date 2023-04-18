@@ -1,9 +1,9 @@
-from one_block.base import Base, BasePlainText
+from one_block.base import Base, BaseText
 
 
 class Select(Base):
     def __init__(self, label, block_id, element):
-        self.label = BasePlainText(label)
+        self.label = BaseText(label)
         self.block_id = block_id
         self.element = element
 

@@ -1,16 +1,12 @@
 from one_block.accessory import Accessory
-from one_block.base import BasePlainText, BaseMarkdown
+from one_block.base import BaseText
 
 
 class Option(Accessory):
-    def __init__(self, item, value=None, description=None, markdown=False):
-        constructor = BaseMarkdown if markdown else BasePlainText
-        self.item = constructor(item)
+    def __init__(self, item: str, value=None, description=None, markdown=False):
+        self.item = BaseText(item, markdown=markdown)
         value = value or item
-        if description:
-            self.description = BaseMarkdown(description)
-        else:
-            self.description = None
+        self.description = BaseText(description, markdown=True) if description else None
         self.value = value
 
     def json(self):

@@ -1,29 +1,20 @@
+import enum
+from typing import Optional
+
 from one_block import base
 from one_block.accessory import Accessory
 
 
+class ButtonStyle(enum.Enum):
+    DEFAULT = None
+    PRIMARY = 'primary'
+    DANGER = 'danger'
+
+
 class Button(Accessory):
-    def __init__(self, label, action_id, value, style=None):
-        self.label = label
-        self.action_id = action_id
-        self.value = value
-        self.style = style
-
-    def json(self):
-        blocks = {
-            'type': 'button',
-            'text': base.BasePlainText(self.label),
-            'value': self.value,
-            'action_id': self.action_id
-        }
-        if self.style:
-            blocks['style'] = self.style
-        return blocks
-
-
-class LinkButton(Accessory):
-    def __init__(self, label, action_id, value, url, style=None):
-        self.label = label
+    def __init__(self, label: str, action_id: str, value: str, url: Optional[str] = None,
+                 style: ButtonStyle = ButtonStyle.DEFAULT):
+        self.label = base.BaseText(label)
         self.action_id = action_id
         self.value = value
         self.url = url
@@ -32,11 +23,12 @@ class LinkButton(Accessory):
     def json(self):
         blocks = {
             'type': 'button',
-            'text': base.BasePlainText(self.label),
+            'text': self.label.json(),
             'value': self.value,
-            'url': self.url,
             'action_id': self.action_id
         }
-        if self.style:
-            blocks['style'] = self.style
+        if self.url:
+            blocks['url'] = self.url
+        if self.style != ButtonStyle.DEFAULT:
+            blocks['style'] = self.style.value
         return blocks

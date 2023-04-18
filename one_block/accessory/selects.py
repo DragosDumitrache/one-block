@@ -6,7 +6,7 @@ from one_block.accessory import Accessory, Option
 
 class UserSelect(Accessory):
     def __init__(self, placeholder, action_id, initial=None, multi=False):
-        self.placeholder = base.BaseMarkdown(placeholder)
+        self.placeholder = base.BaseText(placeholder, markdown=True)
         self.action_id = action_id
         self.initial = initial
         self.multi = multi
@@ -25,7 +25,7 @@ class UserSelect(Accessory):
 
 class StaticSelect(Accessory):
     def __init__(self, placeholder, action_id, options: List[Option], initial=None, multi=False):
-        self.placeholder = base.BasePlainText(placeholder)
+        self.placeholder = base.BaseText(placeholder)
         self.action_id = action_id
         self.options = options
         self.initial = initial
@@ -46,7 +46,7 @@ class StaticSelect(Accessory):
 
 class ConversationSelect(Accessory):
     def __init__(self, placeholder, action_id, initial=None, multi=False):
-        self.placeholder = base.BaseMarkdown(placeholder)
+        self.placeholder = base.BaseText(placeholder, markdown=True)
         self.action_id = action_id
         self.initial = initial
         self.multi = multi
@@ -65,7 +65,7 @@ class ConversationSelect(Accessory):
 
 class ChannelSelect(Accessory):
     def __init__(self, placeholder, action_id, initial=None, multi=False):
-        self.placeholder = base.BasePlainText(placeholder)
+        self.placeholder = base.BaseText(placeholder)
         self.action_id = action_id
         self.initial = initial
         self.multi = multi

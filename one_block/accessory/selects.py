@@ -46,7 +46,7 @@ class StaticSelect(Accessory):
 
 class ConversationSelect(Accessory):
     def __init__(self, placeholder, action_id, initial=None, multi=False):
-        self.placeholder = base.BaseText(placeholderg)
+        self.placeholder = base.BaseText(placeholder)
         self.action_id = action_id
         self.initial = initial
         self.multi = multi

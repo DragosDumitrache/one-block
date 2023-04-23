@@ -6,7 +6,7 @@ from one_block.accessory import Accessory, Option
 
 class UserSelect(Accessory):
     def __init__(self, placeholder, action_id, initial=None, multi=False):
-        self.placeholder = base.BaseText(placeholder, markdown=True)
+        self.placeholder = base.BaseText(placeholder)
         self.action_id = action_id
         self.initial = initial
         self.multi = multi
@@ -46,7 +46,7 @@ class StaticSelect(Accessory):
 
 class ConversationSelect(Accessory):
     def __init__(self, placeholder, action_id, initial=None, multi=False):
-        self.placeholder = base.BaseText(placeholder, markdown=True)
+        self.placeholder = base.BaseText(placeholderg)
         self.action_id = action_id
         self.initial = initial
         self.multi = multi

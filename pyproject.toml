@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "one-block"
-version = "0.1.2"
+version = "0.1.3"
 description = "An easy-to-use, opinionated slack blockkit implementation"
 authors = ["Dragos Dumitrache <dragos@afterburner.dev>"]
 license = "MIT"
